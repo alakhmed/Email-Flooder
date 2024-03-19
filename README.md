@@ -1,5 +1,6 @@
 # Email-Flooder
 my first c# creation
+its gmail only shutup
 
 <h1>Usage:</h1>
 
