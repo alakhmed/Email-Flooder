@@ -1,6 +1,7 @@
 # Email-Flooder
 my first c# creation <br>
 its gmail only shutup
+all arguments are required (for now)
 
 <h1>Usage:</h1>
 
